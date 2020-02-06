@@ -8,6 +8,11 @@ import (
 type PetStoreController struct {
 }
 
+func NewPetStoreController() *PetStoreController {
+    return &PetStoreController{
+    }
+}
+
 func (controller PetStoreController) Route(router* mux.Router) {
     router.HandleFunc("/store", controller.index)
     router.HandleFunc("/store/{id}", controller.get)

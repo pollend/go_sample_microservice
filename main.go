@@ -19,15 +19,17 @@ import (
     "github.com/google/wire"
     "log"
     "prospect/mobile-physician-api/pkg/application"
-    "prospect/mobile-physician-api/pkg/repositories"
+    "prospect/mobile-physician-api/pkg/controller"
 )
 
 func InitializeApp() (application.Application,error){
 	wire.Build(
-		//db.NewProviderDatabase,
-		//controller.NewProviderController,
-		repositories.NewPetRepository,
-		repositories.NewPetStoreRepository,
+	    // controllers
+	    controller.NewPetController,
+	    controller.NewPetStoreController,
+		// repositories
+		//repositories.NewPetRepository,
+		//repositories.NewPetStoreRepository,
 		application.NewRouter,
 		application.NewApplication)
 	return application.Application{},nil

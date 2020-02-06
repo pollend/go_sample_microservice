@@ -7,17 +7,20 @@ services:
       - "./.data/db:/var/lib/mysql"
     environment:
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: physician_api
-      POSTGRES_USER: physician_api
+      POSTGRES_DB: petstore_api
+      POSTGRES_USER: petstore_api
     ports:
       - 5432:5432
   migration:
-    image: boxfuse/flyway:latest
+    image: flyway/flyway:latest
     container_name: flyway_migration
     depends_on:
       - pg
     volumes:
     - ./migration:/flyway/sql
+    environment:
+      - FLYWAY_CONNECT_RETRIES=180
+    command: -url=jdbc:postgresql://pg:5432/petstore_api -user=petstore_api -password=password migrate
   app:
     build: ./
     depends_on:

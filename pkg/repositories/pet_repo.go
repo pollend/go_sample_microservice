@@ -29,7 +29,7 @@ func (p PetRepository) GetAllProviders() []dao.Pet {
 }
 
 func (p PetRepository) Add(tx* sqlx.Tx,entity* dao.Pet) {
-    tx.MustExec("INSERT into provider () VALUE ()", entity.Breed, entity.Name)
+    tx.MustExec("INSERT into provider () VALUES ()", entity.Breed, entity.Name)
 }
 
 func (p PetRepository) Delete(tx* sqlx.Tx, entity dao.Pet){

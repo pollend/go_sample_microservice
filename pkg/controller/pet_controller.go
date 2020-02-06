@@ -3,11 +3,14 @@ package controller
 import (
     "github.com/gorilla/mux"
     "net/http"
-    "prospect/mobile-physician-api/pkg/repositories"
 )
 
 type PetController struct {
-    provider* repositories.ProviderRepository
+}
+
+func NewPetController() *PetController {
+    return &PetController{
+    }
 }
 
 func (controller PetController) Route(router* mux.Router) {
