@@ -1,0 +1,13 @@
+{
+  "name": "mobile-physician-api",
+  "version": "1.0.0",
+  "description": "keep note for dependency chain: https://github.com/google/wire",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

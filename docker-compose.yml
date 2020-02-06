@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  pg:
+    image: postgres
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: physician_api
+      POSTGRES_USER: physician_api
+    ports:
+      - 5432:5432
+  migration:
+    image: boxfuse/flyway:latest
+    container_name: flyway_migration
+    depends_on:
+      - pg
+    volumes:
+    - ./migration:/flyway/sql
+  app:
+    build: ./
+    depends_on:
+      - pg
+    ports:
+    - 8000:8000
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s

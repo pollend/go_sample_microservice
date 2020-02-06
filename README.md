@@ -1,0 +1,1 @@
+keep note for dependency chain: https://github.com/google/wire
